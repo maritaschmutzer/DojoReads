@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-8" style="margin-top: 20px"></div>
+        <div class="col-4">
+          <a href="/books">Home</a><span> / </span>
+          <a href="/logout">Log Out</a>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col align-self-start" style="margin-top: 100px">
+          <h3>Name: {{user.first_name}}{{user.last_name}}</h3>
+          <h3>Email: {{user.email}}</h3>
+          <h3>Total Reviews: {{len_reviews}}</h3>
+        </div>
+      </div>
+      <div class="row align-items-center" style="margin-top: 50px">
+        <h2>Posted Reviews on the following books</h2>
+        {% for review in user.reviews.all %}
+        <p>{{ review.description }}</p>
+        <a href="/books/{{review.book.id}}">{{ review.book.title }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>
